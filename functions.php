@@ -221,7 +221,6 @@ add_filter( 'excerpt_more', 'cst_excerpt_more' );
 
 // Custom image size for Students
 add_image_size( 'student-post', 200, 300, true );
-// add_image_size( 'news-post', 500, 400, true );
 
 
 // Remove "archive" in archive title
