@@ -4,7 +4,7 @@
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+	// margin: 0 0 1.5em;
 }
 
 .updated:not(.published) {
@@ -20,4 +20,132 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+
+// Student Archive & Staff Page
+.post-type-archive-cst-student .site-main ,
+.staff-grid {
+	display: grid; 
+	gap: 1.1rem;
+	justify-items: center;
+
+	article {
+		max-width: 300px;
+		img {
+			width: 300px;
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+	@media screen and (min-width: 45em) {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"a a"
+			"b c"
+			"d e"
+			"f g";
+		header{
+			grid-area: a;
+		}
+	}
+	
+	@media screen and (min-width: 65em) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas: 
+			"a a a"
+			"b c d"
+			"e f g";
+		header {
+			grid-area: a;
+		}
+		h2 {
+			font-size: 1.3em;
+		}
+	}
+}
+
+
+.single-students {
+	display: flex; 
+	flex-direction: row; 
+	flex-wrap: wrap;
+	border: 1px solid black;
+	border-radius: 2rem;
+	padding: 0 2rem 1rem;
+	h3,
+	a {
+		padding: 1rem;
+	}
+	width: fit-content;
+	align-items: center;
+	margin: 1rem auto;
+}
+
+
+.cst-student {
+	h1 {
+		text-align: center;
+	}
+	img {
+		max-height: 500px;
+		object-fit: cover;
+		border-radius: 2.5rem;
+	}
+	.post-thumbnail {
+		display: flex; 
+		justify-content: center;
+	}
+	.entry-content {
+		max-width: 800px;
+		display: flex;
+		flex-direction: column; 
+		justify-content: space-between; 
+		align-items: center;
+		margin: 0 auto;	
+	}
+}
+
+.post-type-archive-cst-student img {
+	border-radius: 1rem;
+}
+
+.specialty a {
+	color: rgb(0, 0, 153);
+	font-weight: 700; 
+}
+
+.staff-grid article a {
+	background-color: black; 
+	color: white; 
+	border-radius: 1rem;
+	padding: 1rem;
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: rgb(0, 0, 141); 
+	}
+}
+
+
+// News Posts 
+
+.entry-footer span {
+	margin-right: 1rem;
+}
+
+.cat-links a {
+	color: rgb(0, 0, 150);
+	font-weight: 700;
+}
+
+.post {
+	margin-bottom: 5rem;
+}
+
+.post a.post-thumbnail img {
+	margin: 0.5rem 0;
+    max-height: 400px;
+    object-fit: cover;
 }

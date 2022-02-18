@@ -1,4 +1,15 @@
 table {
-	margin: 0 0 1.5em;
+	margin: 1em 0 1.5em;
 	width: 100%;
+	border: 1px solid black;
+	border-radius: 1em;
+	padding: 1rem;
+	font-size: 1.1em;
+	th {
+		background-color: rgb(255, 173, 66); 
+		color: white;
+	}
+	td {
+		padding: 0.5rem;
+	}
 }

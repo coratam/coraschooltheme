@@ -99,6 +99,13 @@ function coraschooltheme_setup() {
 			'flex-height' => true,
 		)
 	);
+
+
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'align-wide' );
+
+	
 }
 add_action( 'after_setup_theme', 'coraschooltheme_setup' );
 
@@ -138,6 +145,15 @@ add_action( 'widgets_init', 'coraschooltheme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function coraschooltheme_scripts() {
+
+	wp_enqueue_style(
+		'cst-google-fonts',
+		"https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Playfair+Display:wght@400;600&display=swap",
+		array(),
+		null
+	);
+
+
 	wp_enqueue_style( 'coraschooltheme-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'coraschooltheme-style', 'rtl', 'replace' );
 
@@ -176,3 +192,43 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Custom Post Types & Taxonomies
+ */
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+
+// Change Excerpt Length
+function cst_excerpt_length( $length ) {
+	if( is_archive('cst-student') ) {
+		return 25;
+	}else{
+		return 50;
+	}
+}
+add_filter( 'excerpt_length', 'cst_excerpt_length', 999 );
+
+// Change Excerpt More test to a link 
+function cst_excerpt_more( $more ) {
+	if( is_archive('cst-student') ) {
+		$more = '...<a class="read-more" href="'.get_permalink().'"> Read More About Student</a>';
+		return $more;
+	}
+}
+add_filter( 'excerpt_more', 'cst_excerpt_more' );
+
+
+// Custom image size for Students
+add_image_size( 'student-post', 200, 300, true );
+// add_image_size( 'news-post', 500, 400, true );
+
+
+// Remove "archive" in archive title
+add_filter( 'get_the_archive_title', 'wpsite_archive_title_remove_prefix' );
+function wpsite_archive_title_remove_prefix( $title ) {
+if ( is_post_type_archive() ) {
+$title = post_type_archive_title( '', false );
+}
+return $title;
+}

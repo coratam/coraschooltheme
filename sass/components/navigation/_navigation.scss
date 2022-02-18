@@ -30,9 +30,9 @@
 				}
 			}
 
-			a {
-				width: 200px;
-			}
+			// a {
+			// 	width: 200px;
+			// }
 
 			:hover > a,
 			.focus > a {
@@ -73,6 +73,40 @@
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
+
+	#menu-item-121 {
+		position: relative; 
+		.sub-menu {
+			display: flex; 
+			flex-direction: row; 
+			flex-wrap: wrap;
+			position: absolute; 
+			left: 8em; 
+			top: 0;
+			li a {
+				font-size: 1.2em;
+				padding: 0; 
+				margin: 1rem;
+			}
+		}
+	}
+}
+
+.main-navigation button {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: relative;
+	svg {
+		width: 52px;
+		height: 52px;
+		position: absolute; 
+		top: -2px;
+		left: -2px;
+		path {
+			background-color: white;
+		}
+	}
 }
 
 @media screen and (min-width: 37.5em) {
@@ -107,3 +141,20 @@
 		flex: 1 0 50%;
 	}
 }
+
+
+.sub-menu {
+	background-color: black;
+	border-radius: 1rem;
+	display: flex; 
+	flex-direction: row; 
+}
+
+// #menu-item-121 {
+// 	position: relative; 
+// 	.sub-menu {
+// 		position: absolute; 
+// 		left: 10em; 
+// 		top: 0;
+// 	}
+// }
